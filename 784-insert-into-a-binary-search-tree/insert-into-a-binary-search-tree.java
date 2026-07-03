@@ -15,30 +15,42 @@
  */
 class Solution {
     public TreeNode insertIntoBST(TreeNode root, int val) {
+        // if(root == null){
+        //     root = new TreeNode(val);
+        //     return root;
+        // }
+        // // find the position and insert.
+        // TreeNode temp = root;
+        // while(temp!= null){
+        //     if(val < temp.val){
+        //         //left subree.
+        //         if(temp.left == null){
+        //             temp.left = new TreeNode(val);
+        //             break;
+        //         }else{
+        //             temp = temp.left;
+        //         }
+        //     }else{
+        //         //right subree.
+        //         if(temp.right == null){
+        //             temp.right = new TreeNode(val);
+        //             break;
+        //         }else{
+        //             temp = temp.right;
+        //         }
+        //     }
+        // }
+        // return root;
+        
+        //recursive approach.
         if(root == null){
-            root = new TreeNode(val);
+            root= new TreeNode(val);
             return root;
         }
-        // find the position and insert.
-        TreeNode temp = root;
-        while(temp!= null){
-            if(val < temp.val){
-                //left subree.
-                if(temp.left == null){
-                    temp.left = new TreeNode(val);
-                    break;
-                }else{
-                    temp = temp.left;
-                }
-            }else{
-                //right subree.
-                if(temp.right == null){
-                    temp.right = new TreeNode(val);
-                    break;
-                }else{
-                    temp = temp.right;
-                }
-            }
+        if(val < root.val){
+            root.left = insertIntoBST(root.left, val);
+        }else{
+            root.right = insertIntoBST(root.right, val);
         }
         return root;
     }
