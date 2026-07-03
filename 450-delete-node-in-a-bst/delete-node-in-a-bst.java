@@ -36,14 +36,22 @@ class Solution {
             }else{
                 //2 child case.
                 //inoreder predecessor
-                TreeNode node = findPredecessor(root.left);
+                // TreeNode node = findPredecessor(root.left);
+                TreeNode node = findSuccessor(root.right);
                 //shift the node
                 root.val = node.val;
                 // delete node.val
-                root.left = deleteNode(root.left, node.val);
+                root.right = deleteNode(root.right, node.val);
             }
         }
         return root;
+    }
+
+    public TreeNode findSuccessor(TreeNode node){
+        while(node.left != null){
+            node = node.left;
+        }
+        return node;
     }
 
     public TreeNode findPredecessor(TreeNode node){
